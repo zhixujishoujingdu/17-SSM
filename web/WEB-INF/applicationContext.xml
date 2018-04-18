@@ -19,7 +19,10 @@
 
     <!--配置数据源-->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="driver" value="${jdbc.driver}"/>
+        <!--driverClassName是String类型的变量名，在上面的类源码里有定义易写成driver（Driver类型），
+        会报Error creating bean with name 'sqlSessionFactory'
+            defined in class path resource [config/applicationContext.xml]: ***错-->
+        <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
